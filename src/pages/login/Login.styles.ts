@@ -3,7 +3,6 @@ import styled from '@emotion/styled'
 export const BackgroundWrapper = styled.div`
   background: #153D50;
   height: 100vh;
-  width: 50vw;
   display: flex
 `
 export const LoginContainer = styled.div`
@@ -14,6 +13,10 @@ export const LoginContainer = styled.div`
   background-color: #f2f2f2;
   width: 50vw;
   gap: 40px;
+
+  a {
+    font-weight: 600;
+  }
 `
 
 export const LoginForm = styled.form`
@@ -33,3 +36,4 @@ export const ImageDiv = styled.div`
   width: 100vw;
   height: 100%;
 `
+
