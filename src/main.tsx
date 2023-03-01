@@ -5,6 +5,7 @@ import { ThemeProvider } from 'styled-components'
 import theme from './tokens/theme'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Login from '@/pages/login/Login'
+import Register from '@/pages/register/Register'
 
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
@@ -12,8 +13,9 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         <ThemeProvider theme={theme}>
             <BrowserRouter>
                 <Routes>
-                    <Route path='/' element={<>a</>} />
+                    <Route path='/' element={<>Rota interna principal</>} />
                     <Route path='/login' element={<Login />} />
+                    <Route path='/register' element={<Register />} />
                 </Routes>
             </BrowserRouter>
         </ThemeProvider>

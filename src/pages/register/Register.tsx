@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import {
+    Box,
     FormControl,
     IconButton,
     InputAdornment,
@@ -16,16 +17,18 @@ import TravelExploreIcon from '@mui/icons-material/TravelExplore'
 
 import { Link, useNavigate } from 'react-router-dom'
 
-import * as S from './Login.styles'
+import * as S from './Register.styles'
 import Button from '@/components/button/Button'
 
 
-function Login() {
+function Register() {
+    const [name, setName] = useState('')
+    const [lastName, setLastName] = useState('')
+    const [phone, setPhone] = useState('')
+    const [city, setCity] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [showPassword, setShowPassword] = useState(false)
-
-    const navigate = useNavigate()
 
     const handleClickShowPassword = () => setShowPassword((show) => !show)
 
@@ -33,22 +36,32 @@ function Login() {
         event.preventDefault()
     }
 
+    const navigate = useNavigate()
+
     return (
         <S.BackgroundWrapper>
             <S.ImageDiv>
                 <TravelExploreIcon style={{ fontSize: 100 }} />
             </S.ImageDiv>
             <Paper elevation={3} style={{ background: '#f2f2f2', display: 'flex' }}>
-                <S.LoginContainer>
-                    <Typography component='h1' variant='h4'>Login</Typography>
-                    <S.LoginForm>
-                        <FormControl sx={{ m: 1, width: '25rem' }}>
-                            <TextField id='email' label='Email' value={email} onChange={(e) => setEmail(e.target.value)}
+                <S.RegisterContainer>
+                    <Typography component='h1' variant='h4'>Cadastro</Typography>
+                    <Box sx={{ width: '25rem', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                        <Box sx={{ display: 'flex', gap: '16px' }}>
+                            <TextField id='name' label='Nome' value={name} onChange={(e) => setName(e.target.value)} />
+                            <TextField id='lastName' label='Sobrenome' value={lastName}
+                                       onChange={(e) => setLastName(e.target.value)} /></Box>
+                        <TextField id='phone' label='Telefone' value={phone}
+                                   onChange={(e) => setPhone(e.target.value)} />
+                        <TextField id='address' label='Cidade' value={city}
+                                   onChange={(e) => setCity(e.target.value)} />
 
-                                       variant='outlined' />
-                        </FormControl>
-                        <FormControl sx={{ m: 1, width: '25rem' }} variant='outlined'>
-                            <InputLabel htmlFor='outlined-adornment-password'>Password</InputLabel>
+                        <TextField id='email' label='Email institucional' value={email}
+                                   onChange={(e) => setEmail(e.target.value)}
+
+                                   variant='outlined' />
+                        <FormControl variant='outlined'>
+                            <InputLabel htmlFor='outlined-adornment-password'>Senha</InputLabel>
                             <OutlinedInput
                                 id='outlined-adornment-password'
                                 type={showPassword ? 'text' : 'password'}
@@ -69,14 +82,14 @@ function Login() {
                                 label='Password'
                             />
                         </FormControl>
-                    </S.LoginForm>
-                    <Button type='button' style={{ width: '400px' }} onClick={() => navigate('/')}>Entrar</Button>
-                    <Typography component={'span'} variant={'body2'} color='1A1A1E'>Não tem uma conta? <Link
-                        to={'/register'}>Cadastre-se</Link></Typography>
-                </S.LoginContainer>
+                    </Box>
+                    <Button type='button' style={{ width: '400px' }} onClick={() => navigate('/')}>Cadastrar</Button>
+                    <Typography component={'span'} variant={'body2'} color='1A1A1E'>Já possui uma conta? <Link
+                        to={'/login'}>Entre</Link></Typography>
+                </S.RegisterContainer>
             </Paper>
         </S.BackgroundWrapper>
     )
 }
 
-export default Login
+export default Register
